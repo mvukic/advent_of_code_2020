@@ -3,17 +3,6 @@ package day12
 import getLines
 import kotlin.math.absoluteValue
 
-data class Move(
-  val orientation: String,
-  val steps: Int
-)
-
-data class Position(
-  var orientation: String,
-  var east: Int,
-  var north: Int
-)
-
 fun main() {
   val moves = getLines("day12_input.txt").map {
     val orientation = it.take(1)
@@ -28,13 +17,13 @@ fun main() {
     println("Executing $move")
     val (orientation, steps) = move
     when (orientation) {
-      "F" -> moveForward1(position, steps)
-      "L" -> turnLeft1(position, steps)
-      "R" -> turnRight1(position, steps)
-      "E" -> moveEast1(position, steps)
-      "W" -> moveWest1(position, steps)
-      "N" -> moveNorth1(position, steps)
-      "S" -> moveSouth1(position, steps)
+      "F" -> moveForward2(position, steps)
+      "L" -> turnLeft2(position, steps)
+      "R" -> turnRight2(position, steps)
+      "E" -> moveEast2(position, steps)
+      "W" -> moveWest2(position, steps)
+      "N" -> moveNorth2(position, steps)
+      "S" -> moveSouth2(position, steps)
     }
     println("Result position: $position")
     println()
@@ -45,23 +34,23 @@ fun main() {
   println("Manhattan distance $distance")
 }
 
-fun moveSouth1(position: Position, steps: Int) {
+fun moveSouth2(position: Position, steps: Int) {
   position.north -= steps
 }
 
-fun moveNorth1(position: Position, steps: Int) {
+fun moveNorth2(position: Position, steps: Int) {
   position.north += steps
 }
 
-fun moveWest1(position: Position, steps: Int) {
+fun moveWest2(position: Position, steps: Int) {
   position.east -= steps
 }
 
-fun moveEast1(position: Position, steps: Int) {
+fun moveEast2(position: Position, steps: Int) {
   position.east += steps
 }
 
-fun moveForward1(position: Position, steps: Int) {
+fun moveForward2(position: Position, steps: Int) {
   when (position.orientation) {
     "E" -> position.east += steps
     "W" -> position.east -= steps
@@ -70,7 +59,7 @@ fun moveForward1(position: Position, steps: Int) {
   }
 }
 
-fun turnLeft1(position: Position, degrees: Int) {
+fun turnLeft2(position: Position, degrees: Int) {
   when (position.orientation) {
     "E" -> {
       when (degrees) {
@@ -107,7 +96,7 @@ fun turnLeft1(position: Position, degrees: Int) {
   }
 }
 
-fun turnRight1(position: Position, degrees: Int) {
+fun turnRight2(position: Position, degrees: Int) {
   when (position.orientation) {
     "E" -> {
       when (degrees) {
